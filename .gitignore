@@ -4,6 +4,9 @@
 # Credentials
 credentials.json
 
+# TODO
+TODO.txt
+
 # Local .terraform directories
 **/.terraform/*
 

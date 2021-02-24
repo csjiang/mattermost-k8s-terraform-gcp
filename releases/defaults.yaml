@@ -1,0 +1,33 @@
+# These default values can be overridden per environment in conf/<env>.yaml files
+
+chart_version: 2.2.0
+
+image_repository: "kubernetesui/dashboard"
+
+image_tag: "v2.2.0"
+
+replica_count: 1
+
+limit_cpu: "200m"
+
+limit_memory: "256Mi"
+
+request_cpu: "100m"
+
+request_memory: "64Mi"
+
+rbac_enabled: true
+
+service_account_name: "kubernetes-dashboard"
+
+ingress_enabled: false
+
+ingress_class: "nginx"
+
+ingress_host: ""
+
+ingress_use_kube_lego: false
+
+ingress_tls_enabled: false
+
+cluster_readonly_role: false

@@ -1,0 +1,63 @@
+bases:
+- environments.yaml
+---
+repositories:
+- name: "kubernetes-dashboard"
+  url: "https://kubernetes.github.io/dashboard"
+
+releases:
+
+# Kubernetes dashboard
+# General-purpose web UI for Kubernetes clusters
+# https://github.com/kubernetes/dashboard
+
+- name: "kubernetes-dashboard"
+  namespace: "kube-system"
+  labels:
+    chart: "kubernetes-dashboard"
+    repo: "kubernetes-dashboard"
+    component: "monitoring"
+    namespace: "kube-system"
+    vendor: "kubernetes"
+  chart: "kubernetes-dashboard/kubernetes-dashboard"
+  version: {{ .Values.chart_version | quote }}
+  wait: true
+  timeout: 180
+  values:
+    - image:
+        repository: {{ .Values.image_repository | quote }}
+        tag: {{ .Values.image_tag | quote }}
+        pullPolicy: IfNotPresent
+
+      replicaCount: {{ .Values.replica_count }}
+
+      resources:
+        limits:
+          cpu: {{ .Values.limit_cpu | quote }}
+          memory: {{ .Values.limit_memory | quote }}
+        requests:
+          cpu: {{ .Values.request_cpu | quote }}
+          memory: {{ .Values.request_memory | quote }}
+
+      rbac:
+        create: {{ .Values.rbac_enabled }}
+        clusterReadOnlyRole: {{ .Values.cluster_readonly_role }}
+
+      serviceAccount:
+        create: {{ .Values.rbac_enabled }}
+        name: {{ .Values.service_account_name | quote }}
+
+      ingress:
+        enabled: {{ .Values.ingress_enabled }}
+        annotations:
+          kubernetes.io/ingress.class: {{ .Values.ingress_class | quote }}
+          nginx.ingress.kubernetes.io/secure-backends: "true"
+          kubernetes.io/tls-acme: {{ .Values.ingress_use_kube_lego | quote }}
+        hosts:
+        - {{ .Values.ingress_host | quote }}
+{{- if eq .Values.ingress_tls_enabled true }}
+        tls:
+        - secretName: kubernetes-dashboard-tls
+          hosts:
+          - {{ .Values.ingress_host | quote }}
+{{- end }}

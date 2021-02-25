@@ -11,3 +11,19 @@ personal mattermost server infrastructure and config-as-code.
 $ git clone git@github.com:csjiang/mattermost-k8s-terraform-gcp.git && cd mattermost-k8s-terraform-gcp
 $ scripts/start-dev-container.sh
 ```
+
+## deploy
+From dev container:
+
+```bash
+$ scripts/deploy-infra.sh
+```
+
+## tear down infrastructure
+The cluster as configured by default in this repo qualifies for GKE's free tier, but will cost a few dollars a day to run. If you don't need it up all the time you can tear down the infra and save on cost.
+
+From dev container:
+
+```bash
+$ scripts/teardown-infra.sh
+```

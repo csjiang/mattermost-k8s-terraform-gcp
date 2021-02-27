@@ -2,7 +2,7 @@
 
 CWD=$PWD
 
-cd terraform/gcp.us-east-1
+cd terraform/gcp.us-east1
 
 terraform plan
 

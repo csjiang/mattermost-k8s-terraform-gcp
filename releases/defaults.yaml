@@ -1,33 +1,43 @@
 # These default values can be overridden per environment in conf/<env>.yaml files
 
-chart_version: 2.2.0
+kube_dash_chart_version: 2.2.0
 
-image_repository: "kubernetesui/dashboard"
+kube_dash_image_repository: "kubernetesui/dashboard"
 
-image_tag: "v2.2.0"
+kube_dash_image_tag: "v2.2.0"
 
-replica_count: 1
+kube_dash_replica_count: 1
 
-limit_cpu: "200m"
+kube_dash_limit_cpu: "200m"
 
-limit_memory: "256Mi"
+kube_dash_limit_memory: "256Mi"
 
-request_cpu: "100m"
+kube_dash_request_cpu: "100m"
 
-request_memory: "64Mi"
+kube_dash_request_memory: "64Mi"
 
-rbac_enabled: true
+kube_dash_rbac_enabled: true
 
-service_account_name: "kubernetes-dashboard"
+kube_dash_service_account_name: "kubernetes-dashboard"
 
-ingress_enabled: false
+kube_dash_ingress_enabled: false
 
-ingress_class: "nginx"
+kube_dash_ingress_class: "nginx"
 
-ingress_host: ""
+kube_dash_ingress_host: ""
 
-ingress_use_kube_lego: false
+kube_dash_ingress_use_kube_lego: false
 
-ingress_tls_enabled: false
+kube_dash_ingress_tls_enabled: false
 
-cluster_readonly_role: false
+kube_dash_cluster_readonly_role: false
+
+mmost_chart_version: 5.29.0
+
+mmost_external_db_enabled: true
+
+mmost_external_db_driver_type: "mysql"
+
+mmost_external_db_connection_string: "mmost:<PASSWORD>@tcp(<HOST>:3306)/mattermost?charset=utf8mb4,utf8&readTimeout=30s&writeTimeout=30s" # TODO 
+
+mmost_provision_kube_db: false

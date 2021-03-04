@@ -12,7 +12,7 @@ COPY deps/google-cloud-sdk.repo /etc/yum.repos.d/google-cloud-sdk.repo
 # install dependencies
 RUN dnf clean all && rm -r /var/cache/dnf  && dnf upgrade -y && dnf update -y && \
 dnf install -y wget which sudo glibc-locale-source \
-man man-db man-pages git unzip google-cloud-sdk
+man man-db man-pages git unzip google-cloud-sdk jq
 
 # set up non-root user with sudo access
 RUN groupadd --gid $USER_GID $USERNAME && \

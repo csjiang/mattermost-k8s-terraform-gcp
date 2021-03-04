@@ -17,3 +17,11 @@ output "kubernetes_cluster_host" {
   value       = google_container_cluster.primary.endpoint
   description = "GKE Cluster Host"
 }
+
+output "gcp_mysql_endpoint" {
+  value = google_sql_database_instance.mattermost_db.first_ip_address
+}
+
+output "gcp_mysql_instance_name" {
+  value = google_sql_database_instance.mattermost_db.name
+}
